@@ -17,9 +17,9 @@ class BusAgency(models.Model):
     
 class Bus(models.Model):
     Bus_TYPES = (
-        ('standart', 'standard'),
-        ('luxury', 'vip')
-        ('sleeper', 'sleeper')
+        ('standard', 'Standard'),
+        ('luxury', 'Luxury'),
+        ('sleeper', 'Sleeper'),
     )
     agency = models.ForeignKey(BusAgency, on_delete=models.CASCADE, related_name='buses')
     bus_number = models.CharField(max_length=20)
