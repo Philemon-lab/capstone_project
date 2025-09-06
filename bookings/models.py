@@ -26,7 +26,7 @@ class Booking(models.Model):
     def generate_booking_reference(self):
         while True:
             ref = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
-            if not booking.objects.filter(booking_reference=ref).exists():
+            if not Booking.objects.filter(booking_reference=ref).exists():
                 return ref
             
     def __str__(self):
