@@ -42,3 +42,10 @@ def create_payment(request, booking_id):
         payment = serializer.save()
         return Response(PaymentSerializer(payment).data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class BookingDetailView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = BookingSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Booking.objects.filter(user=self.request.user)
